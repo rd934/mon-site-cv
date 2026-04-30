@@ -1,25 +1,54 @@
-function App() {
-  return (
-    <div>
-      <h1>Mon CV en ligne</h1>
-      <p>Bienvenue sur mon site !</p>
-    </div>
-  );
-}
+import { useState } from "react";
 
-export default App;function App() {
+function App() {
+  const [file, setFile] = useState(null);
+
   return (
-    <div style={{ 
-      textAlign: "center", 
-      marginTop: "100px",
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #0f172a, #1e293b)",
+      color: "white",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
       fontFamily: "Arial"
     }}>
-      
-      <h1>🚀 Optimiseur de CV IA</h1>
 
-      <p>Upload ton CV pour l'améliorer avec l'IA</p>
+      <h1 style={{ fontSize: "40px" }}>🚀 Optimiseur de CV IA</h1>
+      <p style={{ opacity: 0.7 }}>Améliore ton CV en quelques secondes</p>
 
-      <input type="file" />
+      <div style={{
+        marginTop: "30px",
+        padding: "30px",
+        border: "2px dashed #38bdf8",
+        borderRadius: "15px",
+        textAlign: "center",
+        width: "300px"
+      }}>
+        <input
+          type="file"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+
+        {file && (
+          <p style={{ marginTop: "10px" }}>
+            📄 {file.name}
+          </p>
+        )}
+      </div>
+
+      <button style={{
+        marginTop: "20px",
+        padding: "10px 20px",
+        borderRadius: "10px",
+        border: "none",
+        background: "#38bdf8",
+        color: "black",
+        cursor: "pointer"
+      }}>
+        Analyser mon CV
+      </button>
 
     </div>
   );
